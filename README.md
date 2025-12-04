@@ -552,7 +552,7 @@ If you are reviewing this as a recruiter or lead, the best places to look are:
 - `docker/*`, `nginx/*`, `compose.yml` – deployment model.
 - `tests/*` and `.github/workflows/` – testing and CI strategy.
 
-## 14. License
+## 12. License
 
 ```text
 MIT License

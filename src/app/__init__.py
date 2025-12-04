@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_cors import CORS
 from .config import Config
 from .extensions import init_extensions
 from .logging_config import configure_logging
@@ -20,6 +21,11 @@ def create_app(config_class: type[Config] | None = None) -> Flask:
         "Application created with APP_ENV=%s, ENABLE_NGINX=%s",
         app.config.get("APP_ENV"),
         app.config.get("ENABLE_NGINX"),
+    )
+    CORS(
+        app,
+        resources={r"/*": {"origins": ["http://localhost:5173"]}},
+        supports_credentials=False,
     )
 
     return app

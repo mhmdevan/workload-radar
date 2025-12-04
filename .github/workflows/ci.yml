@@ -29,6 +29,7 @@ jobs:
       APP_ENV: test
       DB_PROVIDER: sqlite
       DB_NAME: ":memory:"
+      PYTHONPATH: src
 
     steps:
       - name: Checkout
