@@ -20,6 +20,9 @@ services:
       - rabbitmq
     ports:
       - "8000:8000"
+    volumes:
+      # Shared volume for offline analytics artifacts (Parquet files, summaries)
+      - ./analytics-data:/data/analytics
 
   worker:
     build:
@@ -30,6 +33,10 @@ services:
     depends_on:
       - rabbitmq
       - web
+    volumes:
+      # Keep the same analytics volume available to the worker in case
+      # we later decide to run the analytics pipeline from Celery.
+      - ./analytics-data:/data/analytics
 
   nginx:
     image: nginx:1.27
